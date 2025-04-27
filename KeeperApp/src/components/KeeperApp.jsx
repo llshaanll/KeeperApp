@@ -24,6 +24,12 @@ function App() {
   }
 
   function onDelete(id) {
+    //Updating the UI
+    setNote((prevValue) => {
+      return prevValue.filter((item) => {
+        return item.id !== id;
+      })
+    })
     //Deleteing from Database
     axios.delete(`http://localhost:3000/notes/${id}`)
          .then(()=>{

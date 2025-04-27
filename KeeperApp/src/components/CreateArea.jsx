@@ -14,10 +14,11 @@ function CreateArea(props) {
 
   function handleSubmit(event) {
     event.preventDefault();
+    props.onAdd(newNote);
     axios.post("http://localhost:3000/notes", newNote)
          .then((response)=>{props.onAdd(response.data)})
          .catch((error)=>{console.log("Error posting data to the database", error.message);
-         })
+         }) 
     setNewNote({ title: "", content: "" });
   }
 
